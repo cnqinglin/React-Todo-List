@@ -2,6 +2,8 @@ import React from 'react';
 import './App.css';
 import TodoInput from './TodoInput';
 import TodoItem from './TodoItem';
+import 'normalize.css';
+import './reset.css'
 class App extends React.Component{
   constructor(props){
     super(props)
@@ -10,6 +12,7 @@ class App extends React.Component{
       todoList: [
         {id:1, title:'第一个待办'},
         {id:2, title:'第二个待办'},
+        {id:3, title:'第三个待办'}
       ]
     }
   }
@@ -22,8 +25,8 @@ class App extends React.Component{
       )
     })
     return (
-      <div className="wrapper">
-       <h1>我的待办</h1>
+      <div className="App">
+       <h1 className="title">我的待办</h1>
        <div className="inputWrapper">
         <TodoInput content={this.state.newTodo} />
        </div>
