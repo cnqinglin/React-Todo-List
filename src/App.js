@@ -1,25 +1,35 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-
+import TodoInput from './TodoInput';
+import TodoItem from './TodoItem';
 class App extends React.Component{
+  constructor(props){
+    super(props)
+    this.state = {
+      newTodo: 'test',
+      todoList: [
+        {id:1, title:'第一个待办'},
+        {id:2, title:'第二个待办'},
+      ]
+    }
+  }
   render(){
+    let todos = this.state.todoList.map((item,index)=>{
+      return (
+        <li>
+          <TodoItem todo={item} />
+        </li>
+      )
+    })
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            编辑 <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            点击查我的项目
-          </a>
-        </header>
+      <div className="wrapper">
+       <h1>我的待办</h1>
+       <div className="inputWrapper">
+        <TodoInput content={this.state.newTodo} />
+       </div>
+       <ol>
+       {todos}
+       </ol>
       </div>
     );
   }
