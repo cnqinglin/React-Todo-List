@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/myapp/build/static/css/main.fd31a2e5.chunk.css",
-    "main.js": "/myapp/build/static/js/main.6062ad17.chunk.js",
-    "main.js.map": "/myapp/build/static/js/main.6062ad17.chunk.js.map",
-    "runtime-main.js": "/myapp/build/static/js/runtime-main.37de7962.js",
-    "runtime-main.js.map": "/myapp/build/static/js/runtime-main.37de7962.js.map",
-    "static/js/2.4a72cf2d.chunk.js": "/myapp/build/static/js/2.4a72cf2d.chunk.js",
-    "static/js/2.4a72cf2d.chunk.js.map": "/myapp/build/static/js/2.4a72cf2d.chunk.js.map",
-    "index.html": "/myapp/build/index.html",
-    "precache-manifest.698c71cf80bfdfbd1adc4b1099f6ab98.js": "/myapp/build/precache-manifest.698c71cf80bfdfbd1adc4b1099f6ab98.js",
-    "service-worker.js": "/myapp/build/service-worker.js",
-    "static/css/main.fd31a2e5.chunk.css.map": "/myapp/build/static/css/main.fd31a2e5.chunk.css.map",
-    "static/media/logo.svg": "/myapp/build/static/media/logo.25bf045c.svg"
+    "main.css": "/React-Todo-List/build/static/css/main.fd31a2e5.chunk.css",
+    "main.js": "/React-Todo-List/build/static/js/main.764c890b.chunk.js",
+    "main.js.map": "/React-Todo-List/build/static/js/main.764c890b.chunk.js.map",
+    "runtime-main.js": "/React-Todo-List/build/static/js/runtime-main.5da4439b.js",
+    "runtime-main.js.map": "/React-Todo-List/build/static/js/runtime-main.5da4439b.js.map",
+    "static/js/2.4a72cf2d.chunk.js": "/React-Todo-List/build/static/js/2.4a72cf2d.chunk.js",
+    "static/js/2.4a72cf2d.chunk.js.map": "/React-Todo-List/build/static/js/2.4a72cf2d.chunk.js.map",
+    "index.html": "/React-Todo-List/build/index.html",
+    "precache-manifest.7590b849402ea9e99f6866045ef7375f.js": "/React-Todo-List/build/precache-manifest.7590b849402ea9e99f6866045ef7375f.js",
+    "service-worker.js": "/React-Todo-List/build/service-worker.js",
+    "static/css/main.fd31a2e5.chunk.css.map": "/React-Todo-List/build/static/css/main.fd31a2e5.chunk.css.map",
+    "static/media/logo.svg": "/React-Todo-List/build/static/media/logo.25bf045c.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.37de7962.js",
+    "static/js/runtime-main.5da4439b.js",
     "static/js/2.4a72cf2d.chunk.js",
     "static/css/main.fd31a2e5.chunk.css",
-    "static/js/main.6062ad17.chunk.js"
+    "static/js/main.764c890b.chunk.js"
   ]
 }

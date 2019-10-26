@@ -7,7 +7,7 @@
     "react-dom": "^16.11.0",
     "react-scripts": "3.2.0"
   },
-  "homepage" : "http://myname.github.io/myapp/build",
+  "homepage" : "https://cnqinglin.github.io/React-Todo-List/build",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
