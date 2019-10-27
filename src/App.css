@@ -1,35 +1,139 @@
 .App{
   color: #333;
-  width: 290px;
-  
+  width: 100%;
   border-radius: 4px;
   background: white ;
   left: 0;
   right: 0;
-  margin-top: 100px;
   margin-left: auto;
   margin-right: auto;
   padding: 0 ;
   padding-bottom: 10px;
   min-height: 20em;
   min-width: 32em;
-  box-shadow: 0 5px 30px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2);
   text-align: center;
   z-index: 20;
   position: absolute;
 }
+.App .fix{
+  
+}
+.App .Topbar-wrapper{
+  position: fixed;
+  top: 0;
+  
+  width: 100%;
+  height: 90px;
+  background-color: #03A9F4;
+  text-align: center;
+  margin-bottom: 20px;
+}
+/*
+.App .Topbar-wrapper .logo{
+  position: absolute;
+  top: 10px;
+  left: 30px;
+  width: 40px;
+  height: 40px;
+  border:1px solid red;
+  margin-top:15px;  
+}
+*/
+.App .Topbar-wrapper .title{
+  position: absolute;
+  text-overflow:ellipsis;
+  white-space: initial;
+  color: aliceblue;
+  top: 10px;
+  width: 8em;
+  right: 50%;
+  margin-right: -4em;
+  line-height: 38px;
+  margin-top: 15px;
+}
+.App .Topbar-wrapper .date{
+  position: absolute;
+  font-size: 10px;
+  top: 10px;
+  left: 200px;
+  width: 100px;
+  height: 30px;
+}
+.App .Topbar-wrapper .search input{
+  text-align: center;
+  line-height: 30px;
+  width: 4em;
+  position: absolute;
+  right: 100px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  width: 100px;
+  background: #eee;
+  border-radius: 5px;
+  height: 30px;
+  margin-top: 30px;
+}
+
+.App .Topbar-wrapper .btn .button{
+  position: absolute;
+  right:30px ;
+  width: 3em;
+  background: #eee;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+  height: 30px;
+  margin-top: 30px;
+}
+.App .middle .tick{
+  font-size: 28px;
+  font-weight: 900;
+  margin-top: 100px;
+  padding: 10px;
+}
+.App .middle .paragraph{
+  margin: 30px auto;
+}
 .App > .todoList> li:nth-child(odd){
   background: #eee;
+  border: 1px solid gray;
 }
 .App > .todoList> li:nth-child(even){
   background: transparent;
 }
-.App h1{
-  margin-top:0 ;
-  background-color: #03A9F4;
-  font-size: 20px;
-  line-height: 60px;
-  color: #ffffff;
-  border-radius: 3px;
-  box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.4);
+
+.wrap{
+  position: absolute;
+  top: 15px;
+  left: 30px;
+  width: 40px;
+  height: 40px;
+  
+  margin-top:7px;  
+}
+.wrap .year{
+  display: flex;
+  margin-left: 24px;
+  font-size: 2em;
+  width: 4em;
+  color: aliceblue;
+}
+.wrap .clock{
+  color: aliceblue;
+  display: flex;
+ 
+  padding-bottom: 1.2em;
+  margin-bottom: 10px;
+  padding-left: -100px;
+  height: 1.2em;
+  width: 6em;
+  overflow: hidden;
+}
+.wrap .count{
+  display: flex;
+  font-size: 28px;
+}
+.wrap .month{
+  display: inline-block;
+  font-size: 10px;
+  margin-top: 5px;
 }

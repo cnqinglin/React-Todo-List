@@ -1,7 +1,20 @@
+.inputWrapper{
+  margin-bottom: 20px;
+}
 .TodoInput{
-    width: 100%;
-    line-height: 1.8;
+    width: 99.7%;
     margin-bottom: 1em;
     font-size: 16px;
-    padding: 0 .2em;
+    padding: 10px 1em;
+    word-break:normal;
+    border-radius: 4px;
+    z-index: -200;
+    margin-bottom: 30px;
+    margin-top: 15px;
+  }
+  .App .inputWrapper .new-todo{
+    width: 20em;
+    margin: auto;
+    text-align: center;
+    list-style: none;
   }

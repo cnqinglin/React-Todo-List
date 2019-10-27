@@ -7,10 +7,33 @@ import './reset.css';
 import UserDialog from './UserDialog';
 import {getCurrentUser, signOut, TodoModel} from './leanCloud'
 
+import ReactDOM from "react-dom";
+
+
+function Clock(props) {
+  return (
+    <div className="wrap">
+      <div className="year">
+        <div className="count"> 1 </div>
+        <div className="month"><p>NOV</p>2019<p></p></div>
+      </div>
+      <div className="clock">{props.date.toTimeString()}.</div>
+    </div>
+  );
+}
+
+function tick() {
+  ReactDOM.render(<Clock date={new Date()} />, document.getElementById("root3"));
+}
+
+setInterval(tick, 1000);
+
+
 class App extends React.Component{
   constructor(props){
     super(props)
     this.state = {
+      placeholder:"What needs to be done?",
       user: getCurrentUser() || {},
       newTodo: '',
       todoList: []
@@ -25,6 +48,7 @@ class App extends React.Component{
     }
   }
   render(){
+    
     let todos = this.state.todoList
       .filter((item)=> !item.deleted)
       .map((item,index)=>{
@@ -37,15 +61,36 @@ class App extends React.Component{
     })
    
 
+   
+
     return (
-      <div className="App">
-        <h1 className="title">{this.state.user.username||'我'}的待办
-          {this.state.user.id ? <button onClick={this.signOut.bind(this)}>登出</button> : null}
-        </h1>
-       <div className="inputWrapper">
-       <TodoInput content={this.state.newTodo}
+      <div className="App" >
+        <div className="fix" >
+        <div className="Topbar-wrapper" >
+            <div className="logo" id="root3"></div>
+            <div className="title">{this.state.user.username||'欢迎使用'}</div>
+            <div className="date" ></div>
+            <div className="search">
+            <input type="search" placeholder="google"/>
+            </div>
+            <div className="btn">
+              {this.state.user.id ? <button className="button" onClick={this.signOut.bind(this)}>注销</button> : null}
+            </div>
+        </div>
+        <div className="middle" >
+              <div className="tick ">TickTick</div>
+              <div className="paragraph">让你的时间变得不再是那么无聊</div>
+        </div>
+       <div className="inputWrapper" >
+        <div>
+          <p className="new-todo">what do you need to do?</p>
+          <TodoInput
+            content={this.state.newTodo}
             onChange={this.changeTitle.bind(this)}
-            onSubmit={this.addTodo.bind(this)} />
+            onSubmit={this.addTodo.bind(this)} > 
+          </TodoInput>
+        </div>
+      </div>
        </div>
        <ol className="todoList">
        {todos}
