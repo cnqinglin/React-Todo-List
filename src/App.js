@@ -5,7 +5,7 @@ import TodoItem from './TodoItem';
 import 'normalize.css';
 import './reset.css';
 import UserDialog from './UserDialog';
-import {getCurrentUser, signOut} from './leanCloud'
+import {getCurrentUser, signOut, TodoModel} from './leanCloud'
 
 class App extends React.Component{
   constructor(props){
@@ -15,6 +15,14 @@ class App extends React.Component{
       newTodo: '',
       todoList: []
     }
+    let user = getCurrentUser()
+    if (user) {
+      TodoModel.getByUser(user, (todos) => {
+        let stateCopy = JSON.parse(JSON.stringify(this.state))
+        stateCopy.todoList = todos
+        this.setState(stateCopy)
+      })
+    }
   }
   render(){
     let todos = this.state.todoList
@@ -22,7 +30,7 @@ class App extends React.Component{
       .map((item,index)=>{
       return (
         <li key={index}>
-          <TodoItem todo={item} onToggle={this.toggle.bind(this)} 
+          <TodoItem todo={item} onToggle={this.toggle.bind(this)}
             onDelete={this.delete.bind(this)}/>
         </li>
       )
@@ -35,7 +43,7 @@ class App extends React.Component{
           {this.state.user.id ? <button onClick={this.signOut.bind(this)}>登出</button> : null}
         </h1>
        <div className="inputWrapper">
-       <TodoInput content={this.state.newTodo} 
+       <TodoInput content={this.state.newTodo}
             onChange={this.changeTitle.bind(this)}
             onSubmit={this.addTodo.bind(this)} />
        </div>
@@ -45,7 +53,7 @@ class App extends React.Component{
        {this.state.user.id ? 
           null : 
           <UserDialog 
-          onSignUp={this.onSignUpOrSignIn.bind(this)} 
+          onSignUp={this.onSignUpOrSignIn.bind(this)}
           onSignIn={this.onSignUpOrSignIn.bind(this)}/>}
       </div>
     )
@@ -57,7 +65,7 @@ class App extends React.Component{
     this.setState(stateCopy)
   }
   onSignUpOrSignIn(user){
-    let stateCopy = JSON.parse(JSON.stringify(this.state)) 
+    let stateCopy = JSON.parse(JSON.stringify(this.state))
     stateCopy.user = user
     this.setState(stateCopy)
   }
@@ -65,8 +73,14 @@ class App extends React.Component{
     
   }
   toggle(e, todo){
+    let oldStatus = todo.status
     todo.status = todo.status === 'completed' ? '' : 'completed'
-    this.setState(this.state) 
+    TodoModel.update(todo, () => {
+      this.setState(this.state)
+    }, (error) => {
+      todo.status = oldStatus
+      this.setState(this.state)
+    }) 
   }
   changeTitle(event){
     this.setState({
@@ -75,28 +89,29 @@ class App extends React.Component{
     })
   }
   addTodo(event){
-    this.state.todoList.push({
-      id: idMaker(),
+    let newTodo = {
+      
       title: event.target.value,
-      status: null,
+      status: '',
       deleted: false
-    })
-    this.setState({
-      newTodo: '',  
-      todoList: this.state.todoList
+    }
+    TodoModel.create(newTodo, (id) => {
+      newTodo.id = id
+      this.state.todoList.push(newTodo)
+      this.setState({
+        newTodo: '',
+        todoList: this.state.todoList
+      })
+    }, (error) => {
+      console.log(error)
     })
   }
   delete(event, todo){
-    todo.deleted = true
-    this.setState(this.state) 
+    TodoModel.destroy(todo.id, () => {
+      todo.deleted = true
+      this.setState(this.state)
+    })
   }
 }
 
 export default App;
-
-let id = 0
-
-function idMaker(){
-  id += 1
-  return id
-}
